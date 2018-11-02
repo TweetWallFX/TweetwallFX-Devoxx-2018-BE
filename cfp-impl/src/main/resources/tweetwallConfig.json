@@ -1,0 +1,7 @@
+{
+    "devoxxCFP": {
+        "baseUri": "https://dvbe18.confinabox.com/api",
+        "eventId": "DVBE18",
+        "votingResultsUri": "https://dvbe18.confinabox.com/api/voting/v1/top/talks"
+    }
+}

@@ -1,0 +1,7 @@
+org.tweetwallfx.devoxx18be.steps.Devoxx18FlipInTweets$FactoryImpl
+org.tweetwallfx.devoxx18be.steps.Devoxx18FlipOutScheduleToday$FactoryImpl
+org.tweetwallfx.devoxx18be.steps.Devoxx18FlipOutScheduleWeek$FactoryImpl
+org.tweetwallfx.devoxx18be.steps.Devoxx18FlipOutTweets$FactoryImpl
+org.tweetwallfx.devoxx18be.steps.Devoxx18ShowSchedule$FactoryImpl
+org.tweetwallfx.devoxx18be.steps.Devoxx18ShowTopRatedToday$FactoryImpl
+org.tweetwallfx.devoxx18be.steps.Devoxx18ShowTopRatedWeek$FactoryImpl

@@ -1,0 +1,63 @@
+{
+    "twitter": {
+        "extendedMode": true
+    },
+    "tweetwall": {
+        "query": "#devoxx",
+        "title": "The JavaFX Exhibition Tweetwall for Devoxx BE 2018 Exhition!",
+        "stylesheetResource": "tweetwall.css"
+    },
+    "stepEngine": {
+        "dataProviderSettings": [
+            {
+                "dataProviderClassName": "org.tweetwallfx.devoxx.cfp.stepengine.dataprovider.ScheduleDataProvider",
+                "config": {
+                    "initialDelay": 300,
+                    "scheduleDuration": 900
+                }
+            }
+        ],
+        "steps": [
+            {
+                "stepClassName": "org.tweetwallfx.devoxx18be.exhibition.Devoxx18ShowSchedule"
+            },
+            {
+                "stepClassName": "org.tweetwallfx.controls.steps.NodeFadeOutStep",
+                "config": {
+                    "nodeSelector": "#scheduleNode"
+                }
+            },
+            {
+                "stepClassName": "org.tweetwallfx.controls.steps.FadeInCloudStep"
+            },
+            {
+                "stepClassName": "org.tweetwallfx.stepengine.steps.NextTweetStep"
+            },
+            {
+                "stepClassName": "org.tweetwallfx.controls.steps.AddTweetToCloudStep"
+            },
+            {
+                "stepClassName": "org.tweetwallfx.controls.steps.CloudToCloudStep"
+            },
+            {
+                "stepClassName": "org.tweetwallfx.controls.steps.CloudToTweetStep"
+            },
+            {
+                "stepClassName": "org.tweetwallfx.stepengine.steps.PauseStep",
+                "config": {
+                    "amount": 5,
+                    "unit": "SECONDS"
+                }
+            },
+            {
+                "stepClassName": "org.tweetwallfx.controls.steps.TweetToCloudStep"
+            },
+            {
+                "stepClassName": "org.tweetwallfx.controls.steps.CloudFadeOutStep"
+            },
+            {
+                "stepClassName": "org.tweetwallfx.controls.steps.ImageMosaicStep"
+            }
+        ]
+    }
+}
