@@ -24,8 +24,8 @@
 
 ////
 
-= JavaFX based TweetWall
-:project-full-path: TweetWallFX/TweetwallFX
+= JavaFX based TweetWalls for Devoxx 2018 BE
+:project-full-path: TweetWallFX/TweetwallFX-Devoxx-2018-BE
 :github-branch: master
 
 image:https://img.shields.io/badge/license-MIT-blue.svg["MIT License", link="https://github.com/{project-full-path}/blob/{github-branch}/LICENSE"]
