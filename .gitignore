@@ -1,0 +1,15 @@
+**/build/
+**/dist/
+**/nbproject/private/
+**/.nb-gradle
+**/.gradle
+**/MyOAuth.properties
+
+# Eclipse specific
+**/.classpath
+**/.project
+**/.settings/
+**/bin/
+
+#
+/*/config.properties
