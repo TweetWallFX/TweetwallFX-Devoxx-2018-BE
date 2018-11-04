@@ -25,12 +25,9 @@ package org.tweetwallfx.devoxx18be.steps;
 
 import java.util.ArrayList;
 import java.util.List;
-import javafx.animation.FadeTransition;
 import javafx.animation.ParallelTransition;
 import javafx.animation.Transition;
-import javafx.scene.Node;
 import javafx.scene.layout.VBox;
-import javafx.util.Duration;
 import org.tweetwallfx.controls.WordleSkin;
 import org.tweetwallfx.stepengine.api.Step;
 import org.tweetwallfx.stepengine.api.StepEngine.MachineContext;
@@ -55,22 +52,11 @@ public class Devoxx18FlipOutTweets implements Step {
 
         List<Transition> transitions = new ArrayList<>();
         vbox.getChildren().forEach(node -> transitions.add(new FlipOutXTransition(node)));
-        Node imageNode = wordleSkin.getNode().lookup("#tweetImage");
         ParallelTransition flipOuts = new ParallelTransition();
-        if (null != imageNode) {
-            FadeTransition fadeTransition = new FadeTransition(Duration.seconds(2), imageNode);
-            fadeTransition.setDelay(Duration.seconds(0.2));
-            fadeTransition.fromValueProperty().setValue(1);
-            fadeTransition.toValueProperty().setValue(0);
-            flipOuts.getChildren().add(fadeTransition);
-        }
         flipOuts.getChildren().addAll(transitions);
         flipOuts.setOnFinished(e -> {
             vbox.getChildren().removeAll();
             wordleSkin.getPane().getChildren().remove(vbox);
-            if (null != imageNode) {
-                wordleSkin.getPane().getChildren().remove(imageNode);
-            }
             context.proceed();
         });
         flipOuts.play();

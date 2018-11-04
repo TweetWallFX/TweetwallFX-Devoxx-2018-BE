@@ -70,7 +70,7 @@
                         "1120blackfriday"
                     ],
                     "historySize": 25,
-                    "maxTweets": 4,
+                    "maxTweets": 10,
                     "minFollowersCount": 50
                 }
             }
