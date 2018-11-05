@@ -22,8 +22,9 @@
  * THE SOFTWARE.
  */
 
-apply plugin: "application"
-mainClassName = "org.tweetwallfx.generic.Main"
+apply plugin: 'java-library'
+apply plugin: 'application'
+mainClassName = 'org.tweetwallfx.generic.Main'
 
 tasks.withType(JavaExec) {
     main mainClassName
@@ -38,11 +39,9 @@ task('debug', dependsOn: 'classes', type: JavaExec) {
 }
 
 dependencies {
-    compile group: 'org.tweetwallfx', name: 'tweetwallfx-devoxx-cfp-stepengine', version: versionTweetwallFX
-    compile group: 'org.tweetwallfx', name: 'tweetwallfx-tweet-stepengine', version: versionTweetwallFX
-
-    runtime project(':tweetwallfx-devoxx-2018-be-cfp-impl')
-    runtime group: 'org.tweetwallfx', name: 'tweetwallfx-tweet-impl-twitter4j', version: versionTweetwallFX
-    runtime group: 'org.tweetwallfx', name: 'tweetwallfx-generic2d', version: versionTweetwallFX
-    runtime group: 'org.apache.logging.log4j', name: 'log4j-core', version: versionLog4j
+    implementation project(':tweetwallfx-devoxx-2018-be-stepengine')
+    implementation project(':tweetwallfx-devoxx-2018-be-cfp-impl')
+    implementation group: 'org.tweetwallfx', name: 'tweetwallfx-tweet-impl-twitter4j', version: versionTweetwallFX
+    implementation group: 'org.tweetwallfx', name: 'tweetwallfx-generic2d', version: versionTweetwallFX
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: versionLog4j
 }
