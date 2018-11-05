@@ -22,15 +22,9 @@
  * THE SOFTWARE.
  */
 
-rootProject.name='tweetwallfx-devoxx-2018-be'
-enableFeaturePreview('STABLE_PUBLISHING')
+apply plugin: 'java-library'
 
-include ':cfp-impl'
-project(':cfp-impl').name = 'tweetwallfx-devoxx-2018-be-cfp-impl'
-include ':stepengine'
-project(':stepengine').name = 'tweetwallfx-devoxx-2018-be-stepengine'
-
-include ':exhibition'
-project(':exhibition').name = 'tweetwallfx-devoxx-2018-be-exhibition'
-include ':cinema'
-project(':cinema').name = 'tweetwallfx-devoxx-2018-be-cinema'
+dependencies {
+    implementation group: 'org.tweetwallfx', name: 'tweetwallfx-devoxx-cfp-stepengine', version: versionTweetwallFX
+    implementation group: 'org.tweetwallfx', name: 'tweetwallfx-tweet-stepengine', version: versionTweetwallFX
+}

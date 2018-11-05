@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.tweetwallfx.devoxx18be.exhibition;
+package org.tweetwallfx.devoxx18be.steps.exhibition;
 
 import java.io.IOException;
 import java.time.Duration;
