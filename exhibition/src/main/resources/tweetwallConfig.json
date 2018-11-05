@@ -12,7 +12,7 @@
             {
                 "dataProviderClassName": "org.tweetwallfx.devoxx.cfp.stepengine.dataprovider.ScheduleDataProvider",
                 "config": {
-                    "initialDelay": 300,
+                    "initialDelay": 0,
                     "scheduleDuration": 900
                 }
             }

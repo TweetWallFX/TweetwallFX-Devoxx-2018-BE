@@ -1,0 +1,32 @@
+{
+    "twitter": {
+        "extendedMode": true
+    },
+    "tweetwall": {
+        "query": "#devoxx",
+        "title": "The JavaFX Exhibition Tweetwall for Devoxx BE 2018 Hallway!",
+        "stylesheetResource": "tweetwall.css"
+    },
+    "stepEngine": {
+        "dataProviderSettings": [
+            {
+                "dataProviderClassName": "org.tweetwallfx.devoxx.cfp.stepengine.dataprovider.ScheduleDataProvider",
+                "config": {
+                    "initialDelay": 0,
+                    "scheduleDuration": 900
+                }
+            }
+        ],
+        "steps": [
+            {
+                "stepClassName": "org.tweetwallfx.devoxx18be.steps.exhibition.Devoxx18ShowSchedule"
+            },
+            {
+                "stepClassName": "org.tweetwallfx.controls.steps.NodeFadeOutStep",
+                "config": {
+                    "nodeSelector": "#scheduleNode"
+                }
+            }
+        ]
+    }
+}
