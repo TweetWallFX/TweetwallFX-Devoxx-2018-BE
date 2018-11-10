@@ -10,25 +10,51 @@
     "stepEngine": {
         "steps": [
             {
-                "stepClassName": "org.tweetwallfx.devoxx18be.steps.Devoxx18ShowSchedule"
+                "stepClassName": "org.tweetwallfx.devoxx18be.steps.Devoxx18ShowSchedule",
+                "config": {
+                    "layoutX": 103,
+                    "layoutY": 230,
+                    "stepDuration": 500
+                }
             },
             {
                 "stepClassName": "org.tweetwallfx.devoxx18be.steps.Devoxx18FlipOutTweets"
             },
             {
-                "stepClassName": "org.tweetwallfx.devoxx18be.steps.Devoxx18FlipInTweets"
+                "stepClassName": "org.tweetwallfx.devoxx18be.steps.Devoxx18FlipInTweets",
+                "config": {
+                    "layoutX": 1100,
+                    "layoutY": 230,
+                    "noOfTweets": 7,
+                    "tweetGap": 15,
+                    "tweetWidth": 600,
+                    "stepDuration": 15000
+                }
             },
             {
                 "stepClassName": "org.tweetwallfx.devoxx18be.steps.Devoxx18FlipOutScheduleToday"
             },
             {
-                "stepClassName": "org.tweetwallfx.devoxx18be.steps.Devoxx18ShowTopRatedToday"
+                "stepClassName": "org.tweetwallfx.devoxx18be.steps.Devoxx18ShowTopRatedToday",
+                "config": {
+                    "layoutX": 103,
+                    "layoutY": 230,
+                    "stepDuration": 500
+                }
             },
             {
                 "stepClassName": "org.tweetwallfx.devoxx18be.steps.Devoxx18FlipOutTweets"
             },
             {
-                "stepClassName": "org.tweetwallfx.devoxx18be.steps.Devoxx18FlipInTweets"
+                "stepClassName": "org.tweetwallfx.devoxx18be.steps.Devoxx18FlipInTweets",
+                "config": {
+                    "layoutX": 1100,
+                    "layoutY": 230,
+                    "noOfTweets": 7,
+                    "tweetGap": 15,
+                    "tweetWidth": 600,
+                    "stepDuration": 15000
+                }
             },
             {
                 "stepClassName": "org.tweetwallfx.controls.steps.NodeFadeOutStep",
@@ -40,18 +66,56 @@
                 "stepClassName": "org.tweetwallfx.devoxx18be.steps.Devoxx18FlipOutScheduleWeek"
             },
             {
-                "stepClassName": "org.tweetwallfx.devoxx18be.steps.Devoxx18ShowTopRatedWeek"
+                "stepClassName": "org.tweetwallfx.devoxx18be.steps.Devoxx18ShowTopRatedWeek",
+                "config": {
+                    "layoutX": 103,
+                    "layoutY": 230,
+                    "stepDuration": 500
+                }
             },
             {
                 "stepClassName": "org.tweetwallfx.devoxx18be.steps.Devoxx18FlipOutTweets"
             },
             {
-                "stepClassName": "org.tweetwallfx.devoxx18be.steps.Devoxx18FlipInTweets"
+                "stepClassName": "org.tweetwallfx.devoxx18be.steps.mosaic.ImageMosaicCreateStep",
+                "config": {
+                    "layoutX": 1100,
+                    "layoutY": 265,
+                    "width": 800,
+                    "height": 600,
+                    "columns": 3,
+                    "rows": 4,
+                    "minNoImages": 15,
+                    "stepDuration": 500
+                }
+            },
+            {
+                "stepClassName": "org.tweetwallfx.devoxx18be.steps.mosaic.ImageMosaicAnimateImageStep"
             },
             {
                 "stepClassName": "org.tweetwallfx.controls.steps.NodeFadeOutStep",
                 "config": {
                     "nodeSelector": "#topRatedWeek"
+                }
+            },
+            {
+                "stepClassName": "org.tweetwallfx.devoxx18be.steps.Devoxx18FlipOutScheduleWeek"
+            },
+            {
+                "stepClassName": "org.tweetwallfx.devoxx18be.steps.Devoxx18ShowSchedule",
+                "config": {
+                    "layoutX": 103,
+                    "layoutY": 230,
+                    "stepDuration": 500
+                }
+            },
+            {
+                "stepClassName": "org.tweetwallfx.devoxx18be.steps.mosaic.ImageMosaicAnimateImageStep"
+            },
+            {
+                "stepClassName": "org.tweetwallfx.controls.steps.NodeFadeOutStep",
+                "config": {
+                    "nodeSelector": "#tweetImage"
                 }
             }
         ],

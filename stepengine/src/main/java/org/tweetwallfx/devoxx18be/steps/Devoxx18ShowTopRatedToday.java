@@ -24,13 +24,13 @@
 package org.tweetwallfx.devoxx18be.steps;
 
 import java.io.IOException;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import javafx.animation.ParallelTransition;
-import javafx.beans.binding.Bindings;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
@@ -58,9 +58,10 @@ import org.tweetwallfx.transitions.FlipInXTransition;
 public class Devoxx18ShowTopRatedToday implements Step {
 
     private static final Logger LOGGER = LogManager.getLogger(Devoxx18ShowTopRatedToday.class);
+    private final Config config;
 
-    private Devoxx18ShowTopRatedToday() {
-        // prevent external instantiation
+    private Devoxx18ShowTopRatedToday(Config config) {
+        this.config = config;
     }
 
     @Override
@@ -73,8 +74,10 @@ public class Devoxx18ShowTopRatedToday implements Step {
             try {
                 Node scheduleNode = FXMLLoader.<Node>load(this.getClass().getResource("/topratedtalktoday.fxml"));
                 transitions.add(new FlipInXTransition(scheduleNode));
-                scheduleNode.layoutXProperty().bind(Bindings.multiply(150.0 / 1920.0, wordleSkin.getSkinnable().widthProperty()));
-                scheduleNode.layoutYProperty().bind(Bindings.multiply(200.0 / 1280.0, wordleSkin.getSkinnable().heightProperty()));
+                scheduleNode.setLayoutX(config.layoutX);
+                scheduleNode.setLayoutY(config.layoutY);
+//                scheduleNode.layoutXProperty().bind(Bindings.multiply(150.0 / 1920.0, wordleSkin.getSkinnable().widthProperty()));
+//                scheduleNode.layoutYProperty().bind(Bindings.multiply(200.0 / 1280.0, wordleSkin.getSkinnable().heightProperty()));
                 wordleSkin.getPane().getChildren().add(scheduleNode);
 
                 GridPane grid = (GridPane) scheduleNode.lookup("#sessionGrid");
@@ -133,6 +136,11 @@ public class Devoxx18ShowTopRatedToday implements Step {
     public boolean shouldSkip(final MachineContext context) {
         return context.getDataProvider(TopTalksTodayDataProvider.class).getFilteredSessionData().isEmpty();
     }
+    
+    @Override
+    public Duration preferredStepDuration(MachineContext context) {
+        return java.time.Duration.ofMillis(config.stepDuration);
+    }    
 
     /**
      * Implementation of {@link Step.Factory} as Service implementation creating
@@ -142,7 +150,7 @@ public class Devoxx18ShowTopRatedToday implements Step {
 
         @Override
         public Devoxx18ShowTopRatedToday create(final StepEngineSettings.StepDefinition stepDefinition) {
-            return new Devoxx18ShowTopRatedToday();
+            return new Devoxx18ShowTopRatedToday(stepDefinition.getConfig(Config.class));
         }
 
         @Override
@@ -158,4 +166,11 @@ public class Devoxx18ShowTopRatedToday implements Step {
             );
         }
     }
+    
+    public static class Config extends AbstractConfig {
+
+        public double layoutX = 0;
+        public double layoutY = 0;
+
+    }    
 }
