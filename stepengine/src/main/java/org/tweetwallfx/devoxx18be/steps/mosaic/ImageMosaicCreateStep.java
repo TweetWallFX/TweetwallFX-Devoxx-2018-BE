@@ -126,7 +126,7 @@ public class ImageMosaicCreateStep implements Step {
 
     /**
      * Implementation of {@link Step.Factory} as Service implementation creating
-     * {@link ImageMosaicStep}.
+     * {@link ImageMosaicCreateStep}.
      */
     public static final class FactoryImpl implements Step.Factory {
 

@@ -250,7 +250,7 @@ public class ImageMosaicAnimateImageStep implements Step {
 
     /**
      * Implementation of {@link Step.Factory} as Service implementation creating
-     * {@link ImageMosaicStep}.
+     * {@link ImageMosaicAnimateImageStep}.
      */
     public static final class FactoryImpl implements Step.Factory {
 
