@@ -25,7 +25,7 @@
                 "config": {
                     "layoutX": 1100,
                     "layoutY": 230,
-                    "noOfTweets": 7,
+                    "numberOfTweetsToDisplay": 7,
                     "tweetGap": 15,
                     "tweetWidth": 600,
                     "stepDuration": 15000
@@ -50,7 +50,7 @@
                 "config": {
                     "layoutX": 1100,
                     "layoutY": 230,
-                    "noOfTweets": 7,
+                    "numberOfTweetsToDisplay": 7,
                     "tweetGap": 15,
                     "tweetWidth": 600,
                     "stepDuration": 15000

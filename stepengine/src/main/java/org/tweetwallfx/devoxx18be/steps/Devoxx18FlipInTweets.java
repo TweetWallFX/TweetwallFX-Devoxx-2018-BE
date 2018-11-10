@@ -76,7 +76,7 @@ public class Devoxx18FlipInTweets implements Step {
         tweetList.setLayoutY(config.layoutY);
 
         List<Tweet> tweets = dataProvider.getTweets();
-        for (int i = 0; i < Math.min(tweets.size(), config.noOfTweets); i++) {
+        for (int i = 0; i < Math.min(tweets.size(), config.numberOfTweetsToDisplay); i++) {
             HBox tweet = createSingleTweetDisplay(tweets.get(i), context, config.tweetWidth);
             tweet.setMaxWidth(config.tweetWidth + 64 + 10);
             tweet.getStyleClass().add("tweetDisplay");
@@ -171,7 +171,7 @@ public class Devoxx18FlipInTweets implements Step {
 
         public double layoutX = 0;
         public double layoutY = 0;
-        public double noOfTweets = 7;
+        public double numberOfTweetsToDisplay = 7;
         public double tweetWidth = 600;
         public double tweetGap = 20;
 

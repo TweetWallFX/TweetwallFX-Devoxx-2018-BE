@@ -24,7 +24,7 @@
 package org.tweetwallfx.devoxx18be.steps;
 
 /**
- *
+ * Abstract step configuration providing stepDuration as config option.
  * @author sven
  */
 public class AbstractConfig {

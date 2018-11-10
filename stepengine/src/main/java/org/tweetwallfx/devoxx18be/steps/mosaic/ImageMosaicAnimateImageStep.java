@@ -93,33 +93,7 @@ public class ImageMosaicAnimateImageStep implements Step {
                     = createReverseHighlightAndZoomTransition(rects, bounds, config, highlightAndZoomTransition.column, highlightAndZoomTransition.row);
             revert.setDelay(Duration.seconds(3));
             revert.play();
-            revert.setOnFinished(revertFinished -> {
-                context.proceed();
-//                count++;
-//                if (count < 3) {
-//                    executeAnimations(context);
-//                } else {
-//                    count = 0;
-//                    ParallelTransition cleanup = new ParallelTransition();
-//                    for (int i = 0; i < config.columns; i++) {
-//                        for (int j = 0; j < config.rows; j++) {
-//                            FadeTransition ft = new FadeTransition(Duration.seconds(0.5), rects[i][j]);
-//                            ft.setToValue(0);
-//                            cleanup.getChildren().addAll(ft);
-//                        }
-//                    }
-//                    cleanup.setOnFinished(cleanUpDown -> {
-//                        for (int i = 0; i < config.columns; i++) {
-//                            for (int j = 0; j < config.rows; j++) {
-//                                pane.getChildren().remove(rects[i][j]);
-//                            }
-//                        }
-//                        highlightedIndexes.clear();
-//                        context.proceed();
-//                    });
-//                    cleanup.play();
-//                }
-            });
+            revert.setOnFinished(revertFinished -> context.proceed());
         });
     }
 
