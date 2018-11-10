@@ -46,13 +46,34 @@
                 "stepClassName": "org.tweetwallfx.devoxx18be.steps.Devoxx18FlipOutTweets"
             },
             {
-                "stepClassName": "org.tweetwallfx.devoxx18be.steps.Devoxx18FlipInTweets"
+                "stepClassName": "org.tweetwallfx.devoxx18be.steps.mosaic.ImageMosaicCreateStep",
+                "config": {
+                    "layoutX": 800,
+                    "layoutY": 300,
+                    "width": 800,
+                    "height": 600,
+                    "columns": 3,
+                    "rows": 4,
+                    "minNoImages": 15
+                }
+            },
+            {
+                "stepClassName": "org.tweetwallfx.devoxx18be.steps.mosaic.ImageMosaicAnimateImageStep"
             },
             {
                 "stepClassName": "org.tweetwallfx.controls.steps.NodeFadeOutStep",
                 "config": {
                     "nodeSelector": "#topRatedWeek"
                 }
+            },
+            {
+                "stepClassName": "org.tweetwallfx.devoxx18be.steps.Devoxx18FlipOutScheduleWeek"
+            },
+            {
+                "stepClassName": "org.tweetwallfx.devoxx18be.steps.Devoxx18ShowSchedule"
+            },
+            {
+                "stepClassName": "org.tweetwallfx.devoxx18be.steps.mosaic.ImageMosaicAnimateImageStep"
             }
         ],
         "dataProviderSettings": [
