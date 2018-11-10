@@ -1,0 +1,79 @@
+{
+    "twitter": {
+        "extendedMode": true
+    },
+    "tweetwall": {
+        "query": "#devoxx",
+        "title": "The JavaFX 2K Cinema Tweetwall for Devoxx BE 2018!",
+        "stylesheetResource": "tweetwall.css"
+    },
+    "stepEngine": {
+        "steps": [
+            {
+                "stepClassName": "org.tweetwallfx.devoxx18be.steps.Devoxx18ShowSchedule"
+            },
+            {
+                "stepClassName": "org.tweetwallfx.devoxx18be.steps.Devoxx18FlipOutTweets"
+            },
+            {
+                "stepClassName": "org.tweetwallfx.devoxx18be.steps.Devoxx18FlipInTweets"
+            },
+            {
+                "stepClassName": "org.tweetwallfx.devoxx18be.steps.Devoxx18FlipOutScheduleToday"
+            },
+            {
+                "stepClassName": "org.tweetwallfx.devoxx18be.steps.Devoxx18ShowTopRatedToday"
+            },
+            {
+                "stepClassName": "org.tweetwallfx.devoxx18be.steps.Devoxx18FlipOutTweets"
+            },
+            {
+                "stepClassName": "org.tweetwallfx.devoxx18be.steps.Devoxx18FlipInTweets"
+            },
+            {
+                "stepClassName": "org.tweetwallfx.controls.steps.NodeFadeOutStep",
+                "config": {
+                    "nodeSelector": "#topRatedToday"
+                }
+            },
+            {
+                "stepClassName": "org.tweetwallfx.devoxx18be.steps.Devoxx18FlipOutScheduleWeek"
+            },
+            {
+                "stepClassName": "org.tweetwallfx.devoxx18be.steps.Devoxx18ShowTopRatedWeek"
+            },
+            {
+                "stepClassName": "org.tweetwallfx.devoxx18be.steps.Devoxx18FlipOutTweets"
+            },
+            {
+                "stepClassName": "org.tweetwallfx.devoxx18be.steps.Devoxx18FlipInTweets"
+            },
+            {
+                "stepClassName": "org.tweetwallfx.controls.steps.NodeFadeOutStep",
+                "config": {
+                    "nodeSelector": "#topRatedWeek"
+                }
+            }
+        ],
+        "dataProviderSettings": [
+            {
+                "dataProviderClassName": "org.tweetwallfx.devoxx.cfp.stepengine.dataprovider.ScheduleDataProvider",
+                "config": {
+                    "initialDelay": 0,
+                    "scheduleDuration": 900
+                }
+            },
+            {
+                "dataProviderClassName": "org.tweetwallfx.tweet.stepengine.dataprovider.TweetStreamDataProvider",
+                "config": {
+                    "blockedTwitterUserScreenNames": [
+                        "1120blackfriday"
+                    ],
+                    "historySize": 25,
+                    "maxTweets": 10,
+                    "minFollowersCount": 50
+                }
+            }
+        ]
+    }
+}
