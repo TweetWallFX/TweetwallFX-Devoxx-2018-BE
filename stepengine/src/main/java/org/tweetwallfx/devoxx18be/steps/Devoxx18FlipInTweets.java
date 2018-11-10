@@ -29,7 +29,6 @@ import java.util.Collection;
 import java.util.List;
 import javafx.animation.ParallelTransition;
 import javafx.animation.Transition;
-import javafx.beans.binding.Bindings;
 import javafx.geometry.Insets;
 import javafx.scene.CacheHint;
 import javafx.scene.image.Image;
@@ -55,15 +54,14 @@ import org.tweetwallfx.tweet.stepengine.dataprovider.TweetStreamDataProvider;
  */
 public class Devoxx18FlipInTweets implements Step {
 
-    protected Devoxx18FlipInTweets() {
-        // prevent external instantiation
+    private final Config config;
+
+    protected Devoxx18FlipInTweets(Config config) {
+        this.config = config;
     }
 
     @Override
     public void doStep(final MachineContext context) {
-        double[] spacing = new double[]{20, 20, 20, 20, 20, 20, 20};
-        double[] maxWidth = new double[]{600, 600, 600, 600, 600, 600, 600};
-
         WordleSkin wordleSkin = (WordleSkin) context.get("WordleSkin");
         final TweetStreamDataProvider dataProvider = context.getDataProvider(TweetStreamDataProvider.class);
 
@@ -71,17 +69,20 @@ public class Devoxx18FlipInTweets implements Step {
 
         List<Transition> transitions = new ArrayList<>();
 
-        tweetList.layoutXProperty().bind(Bindings.multiply(1000.0 / 1920.0, wordleSkin.getSkinnable().widthProperty()));
-        tweetList.layoutYProperty().bind(Bindings.multiply(200.0 / 1280.0, wordleSkin.getSkinnable().heightProperty()));
+//        tweetList.layoutXProperty().bind(Bindings.multiply(1000.0 / 1920.0, wordleSkin.getSkinnable().widthProperty()));
+//        tweetList.layoutYProperty().bind(Bindings.multiply(200.0 / 1280.0, wordleSkin.getSkinnable().heightProperty()));
+
+        tweetList.setLayoutX(config.layoutX);
+        tweetList.setLayoutY(config.layoutY);
 
         List<Tweet> tweets = dataProvider.getTweets();
-        for (int i = 0; i < Math.min(tweets.size(), 7); i++) {
-            HBox tweet = createSingleTweetDisplay(tweets.get(i), context, maxWidth[i]);
-            tweet.setMaxWidth(maxWidth[i] + 64 + 10);
+        for (int i = 0; i < Math.min(tweets.size(), config.numberOfTweetsToDisplay); i++) {
+            HBox tweet = createSingleTweetDisplay(tweets.get(i), context, config.tweetWidth);
+            tweet.setMaxWidth(config.tweetWidth + 64 + 10);
             tweet.getStyleClass().add("tweetDisplay");
             transitions.add(new FlipInXTransition(tweet));
             tweetList.getChildren().add(tweet);
-            VBox.setMargin(tweet, new Insets(0, 0, spacing[i], 0));
+            VBox.setMargin(tweet, new Insets(0, 0, config.tweetGap, 0));
 //            if (i < 5 && i != 1) {
 //                Pane pane = new Pane();
 //                pane.getChildren().add(new Line(0, 0, maxWidth[i], 0));
@@ -138,7 +139,7 @@ public class Devoxx18FlipInTweets implements Step {
 
     @Override
     public java.time.Duration preferredStepDuration(final MachineContext context) {
-        return java.time.Duration.ofSeconds(15);
+        return java.time.Duration.ofMillis(config.stepDuration);
     }
 
     /**
@@ -149,7 +150,7 @@ public class Devoxx18FlipInTweets implements Step {
 
         @Override
         public Devoxx18FlipInTweets create(final StepEngineSettings.StepDefinition stepDefinition) {
-            return new Devoxx18FlipInTweets();
+            return new Devoxx18FlipInTweets(stepDefinition.getConfig(Config.class));
         }
 
         @Override
@@ -165,4 +166,14 @@ public class Devoxx18FlipInTweets implements Step {
             );
         }
     }
+    
+    public static class Config extends AbstractConfig {
+
+        public double layoutX = 0;
+        public double layoutY = 0;
+        public double numberOfTweetsToDisplay = 7;
+        public double tweetWidth = 600;
+        public double tweetGap = 20;
+
+    }    
 }

@@ -41,6 +41,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 import org.tweetwallfx.controls.WordleSkin;
+import org.tweetwallfx.devoxx18be.steps.AbstractConfig;
 import org.tweetwallfx.stepengine.api.DataProvider;
 import org.tweetwallfx.stepengine.api.Step;
 import org.tweetwallfx.stepengine.api.StepEngine.MachineContext;
@@ -86,9 +87,9 @@ public class ImageMosaicCreateStep implements Step {
     }
 
     @Override
-    public java.time.Duration preferredStepDuration(final MachineContext context) {
-        return java.time.Duration.ofSeconds(1);
-    }
+    public java.time.Duration preferredStepDuration(MachineContext context) {
+        return java.time.Duration.ofMillis(config.stepDuration);
+    }    
 
     private Transition createMosaicTransition(final List<ImageStore> imageStores) {
         final SequentialTransition fadeIn = new SequentialTransition();
@@ -146,7 +147,7 @@ public class ImageMosaicCreateStep implements Step {
         }
     }
     
-    public static class Config {
+    public static class Config extends AbstractConfig {
 
         public Double width = null;
         public Double height = null;

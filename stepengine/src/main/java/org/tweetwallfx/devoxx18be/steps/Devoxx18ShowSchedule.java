@@ -31,7 +31,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 import javafx.animation.ParallelTransition;
-import javafx.beans.binding.Bindings;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
@@ -53,12 +52,13 @@ import org.tweetwallfx.transitions.FlipInXTransition;
  *
  * @author Sven Reimers
  */
-public class Devoxx18ShowSchedule extends Devoxx18FlipInTweets {
+public class Devoxx18ShowSchedule implements Step {
 
     private static final Logger LOGGER = LogManager.getLogger(Devoxx18ShowSchedule.class);
+    private final Config config;
 
-    private Devoxx18ShowSchedule() {
-        // prevent external instantiation
+    private Devoxx18ShowSchedule(Config config) {
+        this.config = config;
     }
 
     @Override
@@ -71,8 +71,10 @@ public class Devoxx18ShowSchedule extends Devoxx18FlipInTweets {
             try {
                 Node scheduleNode = FXMLLoader.<Node>load(this.getClass().getResource("/schedule.fxml"));
                 transitions.add(new FlipInXTransition(scheduleNode));
-                scheduleNode.layoutXProperty().bind(Bindings.multiply(150.0 / 1920.0, wordleSkin.getSkinnable().widthProperty()));
-                scheduleNode.layoutYProperty().bind(Bindings.multiply(200.0 / 1280.0, wordleSkin.getSkinnable().heightProperty()));
+//                scheduleNode.layoutXProperty().bind(Bindings.multiply(150.0 / 1920.0, wordleSkin.getSkinnable().widthProperty()));
+//                scheduleNode.layoutYProperty().bind(Bindings.multiply(200.0 / 1280.0, wordleSkin.getSkinnable().heightProperty()));
+                scheduleNode.setLayoutX(config.layoutX);
+                scheduleNode.setLayoutY(config.layoutY);
                 wordleSkin.getPane().getChildren().add(scheduleNode);
 
                 GridPane grid = (GridPane) scheduleNode.lookup("#sessionGrid");
@@ -100,6 +102,11 @@ public class Devoxx18ShowSchedule extends Devoxx18FlipInTweets {
 
         flipIns.play();
     }
+    
+    @Override
+    public java.time.Duration preferredStepDuration(final MachineContext context) {
+        return java.time.Duration.ofMillis(config.stepDuration);
+    }    
 
     private Node createSessionNode(final SessionData sessionData) {
         try {
@@ -127,7 +134,7 @@ public class Devoxx18ShowSchedule extends Devoxx18FlipInTweets {
 
         @Override
         public Devoxx18ShowSchedule create(final StepEngineSettings.StepDefinition stepDefinition) {
-            return new Devoxx18ShowSchedule();
+            return new Devoxx18ShowSchedule(stepDefinition.getConfig(Config.class));
         }
 
         @Override
@@ -140,4 +147,12 @@ public class Devoxx18ShowSchedule extends Devoxx18FlipInTweets {
             return Arrays.asList(ScheduleDataProvider.class);
         }
     }
+    
+    public static class Config extends AbstractConfig {
+
+        public double layoutX = 0;
+        public double layoutY = 0;
+
+    }    
+    
 }
