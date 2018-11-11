@@ -44,7 +44,6 @@
 
 .root {
     -fx-font-family: 'System'; 
-    /*devoxx_gradient: linear-gradient(to bottom right, #bd5c6f, derive(#bd5c6f, -30%));*/
     devoxx_gradient: linear-gradient(to bottom right, #e55630, #f68b1f);
 }
 
