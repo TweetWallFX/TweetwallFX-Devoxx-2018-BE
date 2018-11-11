@@ -21,6 +21,19 @@
                 "stepClassName": "org.tweetwallfx.devoxx18be.steps.Devoxx18FlipOutTweets"
             },
             {
+              "stepClassName": "org.tweetwallfx.devoxx18be.steps.cloud.FadeInCloudStep",
+               "config": {
+                    "layoutX": 1100,
+                    "layoutY": 265,
+                    "width": 800,
+                    "height": 600,
+                    "stepDuration": 20000
+               }
+            },
+            {
+                "stepClassName": "org.tweetwallfx.devoxx18be.steps.cloud.CloudFadeOutStep"
+            },
+            {
                 "stepClassName": "org.tweetwallfx.devoxx18be.steps.Devoxx18FlipInTweets",
                 "config": {
                     "layoutX": 1100,
