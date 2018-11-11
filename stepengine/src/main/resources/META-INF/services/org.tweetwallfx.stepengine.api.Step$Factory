@@ -8,3 +8,5 @@ org.tweetwallfx.devoxx18be.steps.Devoxx18ShowTopRatedWeek$FactoryImpl
 org.tweetwallfx.devoxx18be.steps.exhibition.Devoxx18ShowSchedule$FactoryImpl
 org.tweetwallfx.devoxx18be.steps.mosaic.ImageMosaicCreateStep$FactoryImpl
 org.tweetwallfx.devoxx18be.steps.mosaic.ImageMosaicAnimateImageStep$FactoryImpl
+org.tweetwallfx.devoxx18be.steps.cloud.FadeInCloudStep$FactoryImpl
+org.tweetwallfx.devoxx18be.steps.cloud.CloudFadeOutStep$FactoryImpl

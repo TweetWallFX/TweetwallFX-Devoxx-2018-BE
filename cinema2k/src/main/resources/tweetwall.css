@@ -91,7 +91,7 @@
 
 .wordle .tag {
     /*-fx-font-family: "Calibri";*/
-    -fx-fill: white !important;
+    -fx-fill: #17115c !important;
 /*    -fx-stroke: black;
     -fx-stroke-width: 0.5;    */
     /*-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.7) , 6, 0.0 , 0 , 2 );*/
