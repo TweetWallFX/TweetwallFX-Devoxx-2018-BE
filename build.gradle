@@ -198,3 +198,8 @@ task createFolders(description: 'Creates the folders for the projects and source
         }
     }
 }
+
+task runExhibition dependsOn ':tweetwallfx-devoxx-2018-be-exhibition:run'
+task runCinema2K dependsOn ':tweetwallfx-devoxx-2018-be-cinema2k:run'
+task runCinema4K dependsOn ':tweetwallfx-devoxx-2018-be-cinema4k:run'
+task runHallway dependsOn ':tweetwallfx-devoxx-2018-be-hallway:run'
