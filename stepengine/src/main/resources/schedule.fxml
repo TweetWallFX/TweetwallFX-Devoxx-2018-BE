@@ -54,7 +54,7 @@
    <top>
       <AnchorPane style="-fx-background-color: devoxx_gradient; -fx-background-radius: 10;" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="36.0" prefWidth="205.0" style="-fx-font-size: 20pt; -fx-font-weight: bold;" text="Upcoming Talks" textAlignment="CENTER" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="36.0" prefWidth="205.0" style="-fx-text-fill: #060b33; -fx-font-size: 20pt; -fx-font-weight: bold;" text="Upcoming Talks" textAlignment="CENTER" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
          </children>
          <opaqueInsets>
             <Insets />
@@ -63,7 +63,7 @@
             <Insets bottom="5.0" />
          </BorderPane.margin>
          <effect>
-            <DropShadow color="#aba2a2" />
+            <DropShadow color="#060b33" offsetX="2.0" offsetY="2.0" />
          </effect>
       </AnchorPane>
    </top>

@@ -44,7 +44,8 @@
 
 .root {
     -fx-font-family: 'System'; 
-    devoxx_gradient: linear-gradient(to bottom right, #bd5c6f, derive(#bd5c6f, -30%));
+    /*devoxx_gradient: linear-gradient(to bottom right, #bd5c6f, derive(#bd5c6f, -30%));*/
+    devoxx_gradient: linear-gradient(to bottom right, #e55630, #f68b1f);
 }
 
 .text{
@@ -91,7 +92,7 @@
 
 .wordle .tag {
     /*-fx-font-family: "Calibri";*/
-    -fx-fill: #17115c !important;
+    -fx-fill: #060b33  !important;
 /*    -fx-stroke: black;
     -fx-stroke-width: 0.5;    */
     /*-fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.7) , 6, 0.0 , 0 , 2 );*/
@@ -118,7 +119,7 @@
     -fx-font: 1.2em 'Twitter Color Emoji';    
 /*    -fx-font-family: 'Twitter Color Emoji';
     -fx-font-size: 48pt;    */
-    -fx-fill: derive(blanchedalmond, -5%);    
+    -fx-fill: #060b33; /* derive(blanchedalmond, -5%);    */
 }
 
 /*.tweetFlow {
@@ -128,9 +129,19 @@
 }*/
 
 .tweetDisplay {
+    -fx-background-color: devoxx_gradient; 
+    -fx-background-radius: 5;
 /*    -fx-border-color: black;
     -fx-border-style: solid;
     -fx-border-width: 0pt 0pt 1pt 0pt;
     -fx-border-radius: 5pt;
     -fx-border-insets: 5pt;*/
+}
+
+.tweetProfileImage {
+/*    -fx-border-color: #060b33;
+    -fx-border-style: solid;*/
+/*    -fx-border-width: 0pt 0pt 0pt 0pt;
+    -fx-border-radius: 2pt;
+    -fx-border-insets: 2pt;*/
 }

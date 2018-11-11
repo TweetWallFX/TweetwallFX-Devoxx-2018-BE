@@ -33,6 +33,7 @@ import javafx.geometry.Insets;
 import javafx.scene.CacheHint;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -77,7 +78,7 @@ public class Devoxx18FlipInTweets implements Step {
 
         List<Tweet> tweets = dataProvider.getTweets();
         for (int i = 0; i < Math.min(tweets.size(), config.numberOfTweetsToDisplay); i++) {
-            HBox tweet = createSingleTweetDisplay(tweets.get(i), context, config.tweetWidth);
+            HBox tweet = createSingleTweetDisplay(tweets.get(i), context, config.tweetWidth);            
             tweet.setMaxWidth(config.tweetWidth + 64 + 10);
             tweet.getStyleClass().add("tweetDisplay");
             transitions.add(new FlipInXTransition(tweet));
@@ -117,9 +118,13 @@ public class Devoxx18FlipInTweets implements Step {
         text.setCacheHint(CacheHint.SPEED);
         text.getStyleClass().add("tweetText");
         Image profileImage = context.getDataProvider(TweetUserProfileImageDataProvider.class).getImageBig(displayTweet.getUser());
+        BorderPane imageViewPane = new BorderPane();
+        imageViewPane.getStyleClass().add("tweetProfileImage");
         ImageView profileImageView = new ImageView(profileImage);
         profileImageView.setSmooth(true);
         profileImageView.setCacheHint(CacheHint.QUALITY);
+        imageViewPane.setCenter(profileImageView);
+        BorderPane.setMargin(profileImageView, new Insets(0,0,0,5));
         TextFlow flow = new TextFlow(text);
         flow.getStyleClass().add("tweetFlow");
         flow.maxWidthProperty().set(maxWidth);
@@ -131,7 +136,8 @@ public class Devoxx18FlipInTweets implements Step {
         name.getStyleClass().add("tweetUsername");
         name.setCache(true);
         name.setCacheHint(CacheHint.SPEED);
-        HBox tweet = new HBox(profileImageView, new VBox(name, flow));
+        HBox tweet = new HBox(imageViewPane, new VBox(name, flow));
+        VBox.setMargin(name, new Insets(2,0,0,0));
         tweet.setCacheHint(CacheHint.QUALITY);
         tweet.setSpacing(10);
         return tweet;
