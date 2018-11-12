@@ -118,7 +118,7 @@ public class Devoxx18ShowSchedule implements Step {
             Label room = (Label) session.lookup("#room");
             room.setText(sessionData.room);
             Label startTime = (Label) session.lookup("#startTime");
-            startTime.setText(sessionData.beginTime);
+            startTime.setText(sessionData.beginTime + " - " + sessionData.endTime);
             return session;
         } catch (IOException ex) {
             LOGGER.error(ex);
