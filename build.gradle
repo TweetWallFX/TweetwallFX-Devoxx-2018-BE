@@ -129,6 +129,14 @@ allprojects {
             manifest.attributes provider: 'gradle'
         }
 
+        javadoc {
+            doFirst {
+                def additionalModules = (configurations.javafx + configurations.jaxb)
+                options.addStringOption('-module-path', additionalModules.asPath)
+                options.addStringOption('-add-modules', 'java.activation,java.xml.bind,javafx.controls,javafx.graphics,javafx.fxml')
+            }
+        }
+
         compileJava {
             doFirst {
                 def additionalModules = (configurations.javafx + configurations.jaxb)
