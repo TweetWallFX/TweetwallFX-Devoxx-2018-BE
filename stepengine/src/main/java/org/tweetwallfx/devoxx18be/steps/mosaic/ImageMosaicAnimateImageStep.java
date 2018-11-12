@@ -23,7 +23,6 @@
  */
 package org.tweetwallfx.devoxx18be.steps.mosaic;
 
-import java.security.SecureRandom;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
@@ -52,7 +51,7 @@ public class ImageMosaicAnimateImageStep implements Step {
         // prevent external instantiation
     }
 
-    private static final Random RANDOM = new SecureRandom();
+    private static final Random RANDOM = new Random();
 
     private final Set<Integer> highlightedIndexes = new HashSet<>();
 
