@@ -56,8 +56,6 @@ public class ImageMosaicAnimateImageStep implements Step {
     private static final Random RANDOM = new SecureRandom();
 
     private final Set<Integer> highlightedIndexes = new HashSet<>();
-    private Pane pane;
-    private int count = 0;
 
     @Override
     public boolean shouldSkip(MachineContext context) {
@@ -68,10 +66,6 @@ public class ImageMosaicAnimateImageStep implements Step {
     
     @Override
     public void doStep(final MachineContext context) {
-        WordleSkin wordleSkin = (WordleSkin) context.get("WordleSkin");
-        
-        pane = wordleSkin.getPane();
-
         executeAnimations(context);
     }
 
@@ -87,14 +81,14 @@ public class ImageMosaicAnimateImageStep implements Step {
 
         ImageWallAnimationTransition highlightAndZoomTransition
                 = createHighlightAndZoomTransition(rects, config);
-        highlightAndZoomTransition.transition.play();
         highlightAndZoomTransition.transition.setOnFinished(highlightFinished -> {
             Transition revert
                     = createReverseHighlightAndZoomTransition(rects, bounds, config, highlightAndZoomTransition.column, highlightAndZoomTransition.row);
             revert.setDelay(Duration.seconds(3));
-            revert.play();
             revert.setOnFinished(revertFinished -> context.proceed());
+            revert.play();
         });
+        highlightAndZoomTransition.transition.play();
     }
 
     private ImageWallAnimationTransition createHighlightAndZoomTransition(final ImageView[][] rects, final ImageMosaicCreateStep.Config config) {
