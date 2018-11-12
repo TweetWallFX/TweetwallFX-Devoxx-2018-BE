@@ -1,0 +1,33 @@
+{
+    "filterchains": {
+        "chains": {
+            "twitter": {
+                "domainObjectClassName": "org.tweetwallfx.tweet.api.Tweet",
+                "defaultResult": true,
+                "filterSteps": [
+                    {
+                        "stepClassName": "org.tweetwallfx.tweet.api.filter.AcceptFromSenderFilterStep",
+                        "config": {
+                            "checkRetweeted": false,
+                            "userHandles": [
+                                "Devoxx"
+                            ]
+                        }
+                    },
+                    {
+                        "stepClassName": "org.tweetwallfx.tweet.api.filter.RejectFromSenderFilterStep",
+                        "config": {
+                            "checkRetweeted": false
+                        }
+                    },
+                    {
+                        "stepClassName": "org.tweetwallfx.tweet.api.filter.UserMinimumFollwerCountFilterStep",
+                        "config": {
+                            "count": 25
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}
