@@ -6,31 +6,38 @@
                 "defaultResult": true,
                 "filterSteps": [
                     {
-                        "stepClassName": "org.tweetwallfx.tweet.api.filter.AcceptFromSenderFilterStep",
-                        "config": {
-                            "checkRetweeted": false,
-                            "userHandles": [
-                                "Devoxx"
-                            ]
-                        }
+                        "stepClassName": "org.tweetwallfx.tweet.api.filter.AcceptFromSenderFilterStep"
                     },
                     {
-                        "stepClassName": "org.tweetwallfx.tweet.api.filter.RejectFromSenderFilterStep",
-                        "config": {
-                            "checkRetweeted": true,
-                            "userHandles": [
-                                "turkeytoday"
-                            ]
-                        }
+                        "stepClassName": "org.tweetwallfx.tweet.api.filter.RejectFromSenderFilterStep"
                     },
                     {
-                        "stepClassName": "org.tweetwallfx.tweet.api.filter.UserMinimumFollwerCountFilterStep",
-                        "config": {
-                            "count": 25
-                        }
+                        "stepClassName": "org.tweetwallfx.tweet.api.filter.UserMinimumFollwerCountFilterStep"
+                    },
+                    {
+                        "stepClassName": "org.tweetwallfx.tweet.api.filter.MaxHashtagLengthFilterStep"
                     }
                 ]
             }
         }
+    },
+    "org.tweetwallfx.tweet.api.filter.AcceptFromSenderFilterStep$Config": {
+        "checkRetweeted": false,
+        "userHandles": [
+            "Devoxx"
+        ]
+    },
+    "org.tweetwallfx.tweet.api.filter.MaxHashtagLengthFilterStep$Config": {
+        "checkRetweeted": true,
+        "maxLength": 15
+    },
+    "org.tweetwallfx.tweet.api.filter.RejectFromSenderFilterStep$Config": {
+        "checkRetweeted": true,
+        "userHandles": [
+            "turkeytoday"
+        ]
+    },
+    "org.tweetwallfx.tweet.api.filter.UserMinimumFollwerCountFilterStep$Config": {
+        "count": 25
     }
 }
