@@ -38,3 +38,7 @@ include ':cinema4k'
 project(':cinema4k').name = 'tweetwallfx-devoxx-2018-be-cinema4k'
 include ':hallway'
 project(':hallway').name = 'tweetwallfx-devoxx-2018-be-hallway'
+
+if (file('../TweetWallFX').exists()) {
+  includeBuild '../TweetWallFX'
+}

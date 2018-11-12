@@ -52,12 +52,11 @@ apply plugin: 'com.github.ben-manes.versions'
 
 ext {
     releaseDate = new Date()
-    javaFxPlatform = osdetector.os == 'osx' ? 'mac' : osdetector.os == 'windows' ? 'win' : osdetector.os
-
     bintrayEnabled = \
         ('false' != System.getenv('TRAVIS_PULL_REQUEST')) &&
         null != findProperty('BINTRAY_USER') &&
         null != findProperty('BINTRAY_KEY')
+    javaFxPlatform = osdetector.os == 'osx' ? 'mac' : osdetector.os == 'windows' ? 'win' : osdetector.os
 }
 
 
