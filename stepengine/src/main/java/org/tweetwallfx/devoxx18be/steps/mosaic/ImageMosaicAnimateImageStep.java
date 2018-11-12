@@ -36,7 +36,6 @@ import javafx.animation.Transition;
 import javafx.geometry.Bounds;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 import org.tweetwallfx.controls.WordleSkin;
 import org.tweetwallfx.stepengine.api.DataProvider;
@@ -56,8 +55,6 @@ public class ImageMosaicAnimateImageStep implements Step {
     private static final Random RANDOM = new SecureRandom();
 
     private final Set<Integer> highlightedIndexes = new HashSet<>();
-    private Pane pane;
-    private int count = 0;
 
     @Override
     public boolean shouldSkip(MachineContext context) {
@@ -68,10 +65,6 @@ public class ImageMosaicAnimateImageStep implements Step {
     
     @Override
     public void doStep(final MachineContext context) {
-        WordleSkin wordleSkin = (WordleSkin) context.get("WordleSkin");
-        
-        pane = wordleSkin.getPane();
-
         executeAnimations(context);
     }
 
@@ -87,14 +80,14 @@ public class ImageMosaicAnimateImageStep implements Step {
 
         ImageWallAnimationTransition highlightAndZoomTransition
                 = createHighlightAndZoomTransition(rects, config);
-        highlightAndZoomTransition.transition.play();
         highlightAndZoomTransition.transition.setOnFinished(highlightFinished -> {
             Transition revert
                     = createReverseHighlightAndZoomTransition(rects, bounds, config, highlightAndZoomTransition.column, highlightAndZoomTransition.row);
             revert.setDelay(Duration.seconds(3));
-            revert.play();
             revert.setOnFinished(revertFinished -> context.proceed());
+            revert.play();
         });
+        highlightAndZoomTransition.transition.play();
     }
 
     private ImageWallAnimationTransition createHighlightAndZoomTransition(final ImageView[][] rects, final ImageMosaicCreateStep.Config config) {
@@ -160,14 +153,6 @@ public class ImageMosaicAnimateImageStep implements Step {
 
         SequentialTransition seqT = new SequentialTransition();
         seqT.getChildren().addAll(firstParallelTransition, secondParallelTransition);
-
-        firstParallelTransition.setOnFinished(event -> {
-//            DropShadow ds = new DropShadow();
-//            ds.setOffsetY(10.0);
-//            ds.setOffsetX(10.0);
-//            ds.setColor(Color.GRAY);
-//            randomView.setEffect(ds);
-        });
 
         return new ImageWallAnimationTransition(seqT, column, row);
     }
