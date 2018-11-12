@@ -36,7 +36,6 @@ import javafx.animation.Transition;
 import javafx.geometry.Bounds;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 import org.tweetwallfx.controls.WordleSkin;
 import org.tweetwallfx.stepengine.api.DataProvider;
@@ -154,14 +153,6 @@ public class ImageMosaicAnimateImageStep implements Step {
 
         SequentialTransition seqT = new SequentialTransition();
         seqT.getChildren().addAll(firstParallelTransition, secondParallelTransition);
-
-        firstParallelTransition.setOnFinished(event -> {
-//            DropShadow ds = new DropShadow();
-//            ds.setOffsetY(10.0);
-//            ds.setOffsetX(10.0);
-//            ds.setColor(Color.GRAY);
-//            randomView.setEffect(ds);
-        });
 
         return new ImageWallAnimationTransition(seqT, column, row);
     }
