@@ -17,7 +17,10 @@
                     {
                         "stepClassName": "org.tweetwallfx.tweet.api.filter.RejectFromSenderFilterStep",
                         "config": {
-                            "checkRetweeted": false
+                            "checkRetweeted": true,
+                            "userHandles": [
+                                "turkeytoday"
+                            ]
                         }
                     },
                     {
