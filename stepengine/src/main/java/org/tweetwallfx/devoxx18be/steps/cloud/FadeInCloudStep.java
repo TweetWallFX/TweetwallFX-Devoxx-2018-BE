@@ -40,8 +40,6 @@ import javafx.scene.SnapshotParameters;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 import org.tweetwallfx.controls.Word;
@@ -68,20 +66,25 @@ public class FadeInCloudStep implements Step {
     }
 
     @Override
-    public void doStep(final MachineContext context) {
+    public boolean shouldSkip(MachineContext context) {
         List<Word> sortedWords = context.getDataProvider(TagCloudDataProvider.class).getWords();
-
-        if (sortedWords.isEmpty()) {
-            return;
-        }
-
+        return sortedWords.isEmpty();
+    }    
+    
+    @Override
+    public void doStep(final MachineContext context) {
         WordleSkin wordleSkin = (WordleSkin) context.get("WordleSkin");
+        context.put("cloudConfig", config);
+        List<Word> sortedWords = context.getDataProvider(TagCloudDataProvider.class).getWords();
         List<Word> limitedWords = sortedWords.stream().limit(wordleSkin.getDisplayCloudTags()).collect(Collectors.toList());
-        limitedWords.sort(Comparator.reverseOrder());
+        List<Word> cutOfflLimitedWords = limitedWords.stream().
+                sorted(Comparator.reverseOrder()).
+                map(w -> new Word(w.getText().substring(0, Math.min(config.tagLength, w.getText().length())), w.getWeight())).
+                collect(Collectors.toList());
 
-        Bounds layoutBounds = new BoundingBox(config.layoutX, config.layoutY, config.width, config.height);
+        Bounds layoutBounds = new BoundingBox(1,1, config.width, config.height);
 
-        WordleLayout.Configuration configuration = new WordleLayout.Configuration(limitedWords, wordleSkin.getFont(), wordleSkin.getFontSizeMax(), layoutBounds);
+        WordleLayout.Configuration configuration = new WordleLayout.Configuration(cutOfflLimitedWords, wordleSkin.getFont(), wordleSkin.getFontSizeMax(), layoutBounds);
         if (null != wordleSkin.getLogo()) {
             configuration.setBlockedAreaBounds(wordleSkin.getLogo().getBoundsInParent());
         }
@@ -171,7 +174,7 @@ public class FadeInCloudStep implements Step {
         public double layoutY = 0;
         public double width = 0;
         public double height = 0;
-               
+        public int tagLength = 15;       
     }
             
 }
