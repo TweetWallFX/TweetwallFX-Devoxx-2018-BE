@@ -104,7 +104,7 @@ public class ImageMosaicCreateStep implements Step {
                 ImageView imageView = new ImageView(selectedImage.getImage());
                 imageView.setId("tweetImage");
                 imageView.setCache(true);
-                imageView.setCacheHint(CacheHint.SPEED);
+                imageView.setCacheHint(CacheHint.QUALITY);
                 imageView.setFitWidth(width);
                 imageView.setFitHeight(height);
                 imageView.setEffect(new GaussianBlur(0));
