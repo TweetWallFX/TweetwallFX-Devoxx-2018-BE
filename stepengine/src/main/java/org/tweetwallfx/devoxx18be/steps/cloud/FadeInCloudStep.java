@@ -77,11 +77,14 @@ public class FadeInCloudStep implements Step {
         context.put("cloudConfig", config);
         List<Word> sortedWords = context.getDataProvider(TagCloudDataProvider.class).getWords();
         List<Word> limitedWords = sortedWords.stream().limit(wordleSkin.getDisplayCloudTags()).collect(Collectors.toList());
-        limitedWords.sort(Comparator.reverseOrder());
+        List<Word> cutOfflLimitedWords = limitedWords.stream().
+                sorted(Comparator.reverseOrder()).
+                map(w -> new Word(w.getText().substring(0, Math.min(config.tagLength, w.getText().length())), w.getWeight())).
+                collect(Collectors.toList());
 
         Bounds layoutBounds = new BoundingBox(1,1, config.width, config.height);
 
-        WordleLayout.Configuration configuration = new WordleLayout.Configuration(limitedWords, wordleSkin.getFont(), wordleSkin.getFontSizeMax(), layoutBounds);
+        WordleLayout.Configuration configuration = new WordleLayout.Configuration(cutOfflLimitedWords, wordleSkin.getFont(), wordleSkin.getFontSizeMax(), layoutBounds);
         if (null != wordleSkin.getLogo()) {
             configuration.setBlockedAreaBounds(wordleSkin.getLogo().getBoundsInParent());
         }
@@ -171,7 +174,7 @@ public class FadeInCloudStep implements Step {
         public double layoutY = 0;
         public double width = 0;
         public double height = 0;
-               
+        public int tagLength = 15;       
     }
             
 }
