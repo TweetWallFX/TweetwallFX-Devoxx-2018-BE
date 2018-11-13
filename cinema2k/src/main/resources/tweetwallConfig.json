@@ -13,7 +13,7 @@
                 "stepClassName": "org.tweetwallfx.devoxx18be.steps.Devoxx18ShowSchedule",
                 "config": {
                     "layoutX": 103,
-                    "layoutY": 230,
+                    "layoutY": 200,
                     "stepDuration": 500
                 }
             },
@@ -24,7 +24,7 @@
               "stepClassName": "org.tweetwallfx.devoxx18be.steps.cloud.FadeInCloudStep",
                "config": {
                     "layoutX": 1100,
-                    "layoutY": 265,
+                    "layoutY": 235,
                     "width": 800,
                     "height": 600,
                     "stepDuration": 30000
@@ -37,8 +37,8 @@
                 "stepClassName": "org.tweetwallfx.devoxx18be.steps.Devoxx18FlipInTweets",
                 "config": {
                     "layoutX": 1100,
-                    "layoutY": 230,
-                    "numberOfTweetsToDisplay": 7,
+                    "layoutY": 210,
+                    "numberOfTweetsToDisplay": 6,
                     "tweetGap": 15,
                     "tweetWidth": 600,
                     "stepDuration": 15000
@@ -51,7 +51,7 @@
                 "stepClassName": "org.tweetwallfx.devoxx18be.steps.Devoxx18ShowTopRatedToday",
                 "config": {
                     "layoutX": 103,
-                    "layoutY": 230,
+                    "layoutY": 200,
                     "stepDuration": 500
                 }
             },
@@ -62,8 +62,8 @@
                 "stepClassName": "org.tweetwallfx.devoxx18be.steps.Devoxx18FlipInTweets",
                 "config": {
                     "layoutX": 1100,
-                    "layoutY": 230,
-                    "numberOfTweetsToDisplay": 7,
+                    "layoutY": 210,
+                    "numberOfTweetsToDisplay": 6,
                     "tweetGap": 15,
                     "tweetWidth": 600,
                     "stepDuration": 15000
@@ -82,7 +82,7 @@
                 "stepClassName": "org.tweetwallfx.devoxx18be.steps.Devoxx18ShowTopRatedWeek",
                 "config": {
                     "layoutX": 103,
-                    "layoutY": 230,
+                    "layoutY": 200,
                     "stepDuration": 500
                 }
             },
@@ -93,7 +93,7 @@
                 "stepClassName": "org.tweetwallfx.devoxx18be.steps.mosaic.ImageMosaicCreateStep",
                 "config": {
                     "layoutX": 1100,
-                    "layoutY": 265,
+                    "layoutY": 230,
                     "width": 800,
                     "height": 600,
                     "columns": 3,
@@ -115,7 +115,7 @@
                 "stepClassName": "org.tweetwallfx.devoxx18be.steps.Devoxx18ShowSchedule",
                 "config": {
                     "layoutX": 103,
-                    "layoutY": 230,
+                    "layoutY": 200,
                     "stepDuration": 500
                 }
             },
@@ -129,7 +129,7 @@
                 "stepClassName": "org.tweetwallfx.devoxx18be.steps.mosaic.ImageMosaicCreateStep",
                 "config": {
                     "layoutX": 1100,
-                    "layoutY": 265,
+                    "layoutY": 230,
                     "width": 800,
                     "height": 600,
                     "columns": 3,
