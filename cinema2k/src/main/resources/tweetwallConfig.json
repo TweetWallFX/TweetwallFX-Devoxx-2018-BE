@@ -27,7 +27,7 @@
                     "layoutY": 265,
                     "width": 800,
                     "height": 600,
-                    "stepDuration": 20000
+                    "stepDuration": 30000
                }
             },
             {
@@ -99,11 +99,8 @@
                     "columns": 3,
                     "rows": 4,
                     "minNoImages": 15,
-                    "stepDuration": 500
+                    "stepDuration": 10000
                 }
-            },
-            {
-                "stepClassName": "org.tweetwallfx.devoxx18be.steps.mosaic.ImageMosaicAnimateImageStep"
             },
             {
                 "stepClassName": "org.tweetwallfx.controls.steps.NodeFadeOutStep",
@@ -123,14 +120,30 @@
                 }
             },
             {
-                "stepClassName": "org.tweetwallfx.devoxx18be.steps.mosaic.ImageMosaicAnimateImageStep"
+                "stepClassName": "org.tweetwallfx.controls.steps.NodeFadeOutStep",
+                "config": {
+                    "nodeSelector": "#tweetImage"
+                }
+            },
+            {
+                "stepClassName": "org.tweetwallfx.devoxx18be.steps.mosaic.ImageMosaicCreateStep",
+                "config": {
+                    "layoutX": 1100,
+                    "layoutY": 265,
+                    "width": 800,
+                    "height": 600,
+                    "columns": 3,
+                    "rows": 4,
+                    "minNoImages": 15,
+                    "stepDuration": 15000
+                }
             },
             {
                 "stepClassName": "org.tweetwallfx.controls.steps.NodeFadeOutStep",
                 "config": {
                     "nodeSelector": "#tweetImage"
                 }
-            }
+            }            
         ],
         "dataProviderSettings": [
             {
