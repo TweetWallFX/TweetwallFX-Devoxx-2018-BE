@@ -26,6 +26,6 @@ apply plugin: 'java-library'
 
 dependencies {
     implementation group: 'org.tweetwallfx', name: 'tweetwallfx-devoxx-cfp-stepengine', version: versionTweetwallFX
-    implementation group: 'org.tweetwallfx', name: 'tweetwallfx-google-vision', version: versionTweetwallFX
+    implementation group: 'org.tweetwallfx', name: 'tweetwallfx-google-cloud', version: versionTweetwallFX
     implementation group: 'org.tweetwallfx', name: 'tweetwallfx-tweet-stepengine', version: versionTweetwallFX
 }
