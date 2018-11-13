@@ -40,8 +40,6 @@ import javafx.scene.SnapshotParameters;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 import org.tweetwallfx.controls.Word;
@@ -68,18 +66,20 @@ public class FadeInCloudStep implements Step {
     }
 
     @Override
-    public void doStep(final MachineContext context) {
+    public boolean shouldSkip(MachineContext context) {
         List<Word> sortedWords = context.getDataProvider(TagCloudDataProvider.class).getWords();
-
-        if (sortedWords.isEmpty()) {
-            return;
-        }
-
+        return sortedWords.isEmpty();
+    }    
+    
+    @Override
+    public void doStep(final MachineContext context) {
         WordleSkin wordleSkin = (WordleSkin) context.get("WordleSkin");
+        context.put("cloudConfig", config);
+        List<Word> sortedWords = context.getDataProvider(TagCloudDataProvider.class).getWords();
         List<Word> limitedWords = sortedWords.stream().limit(wordleSkin.getDisplayCloudTags()).collect(Collectors.toList());
         limitedWords.sort(Comparator.reverseOrder());
 
-        Bounds layoutBounds = new BoundingBox(config.layoutX, config.layoutY, config.width, config.height);
+        Bounds layoutBounds = new BoundingBox(1,1, config.width, config.height);
 
         WordleLayout.Configuration configuration = new WordleLayout.Configuration(limitedWords, wordleSkin.getFont(), wordleSkin.getFontSizeMax(), layoutBounds);
         if (null != wordleSkin.getLogo()) {
