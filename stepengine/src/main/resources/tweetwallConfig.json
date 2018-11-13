@@ -16,6 +16,9 @@
                     },
                     {
                         "stepClassName": "org.tweetwallfx.tweet.api.filter.MaxHashtagLengthFilterStep"
+                    },
+                    {
+                        "stepClassName": "org.tweetwallfx.google.vision.ImageContentFilterStep"
                     }
                 ]
             }
@@ -39,5 +42,23 @@
     },
     "org.tweetwallfx.tweet.api.filter.UserMinimumFollwerCountFilterStep$Config": {
         "count": 25
+    },
+    "org.tweetwallfx.google.vision.ImageContentFilterStep$Config": {
+        "checkRetweeted": true,
+        "adult": {
+            "acceptableLikelyhood": "VERY_UNLIKELY"
+        },
+        "medical": {
+            "acceptableLikelyhood": "UNLIKELY"
+        },
+        "racy": {
+            "acceptableLikelyhood": "VERY_UNLIKELY"
+        },
+        "spoof": {
+            "acceptableLikelyhood": "UNLIKELY"
+        },
+        "violence": {
+            "acceptableLikelyhood": "VERY_UNLIKELY"
+        }
     }
 }
