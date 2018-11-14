@@ -27,7 +27,8 @@
     "org.tweetwallfx.tweet.api.filter.AcceptFromSenderFilterStep$Config": {
         "checkRetweeted": false,
         "userHandles": [
-            "Devoxx"
+            "Devoxx",
+            "dequicktom"
         ]
     },
     "org.tweetwallfx.tweet.api.filter.MaxHashtagLengthFilterStep$Config": {
