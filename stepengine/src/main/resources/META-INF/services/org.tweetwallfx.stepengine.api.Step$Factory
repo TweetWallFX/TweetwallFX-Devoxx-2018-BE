@@ -10,3 +10,4 @@ org.tweetwallfx.devoxx18be.steps.mosaic.ImageMosaicCreateStep$FactoryImpl
 org.tweetwallfx.devoxx18be.steps.mosaic.ImageMosaicAnimateImageStep$FactoryImpl
 org.tweetwallfx.devoxx18be.steps.cloud.FadeInCloudStep$FactoryImpl
 org.tweetwallfx.devoxx18be.steps.cloud.CloudFadeOutStep$FactoryImpl
+org.tweetwallfx.devoxx18be.steps.heaven.WorksLikeHeavenOnJdk11FadeInStep$FactoryImpl

@@ -21,6 +21,13 @@
                 "stepClassName": "org.tweetwallfx.devoxx18be.steps.Devoxx18FlipOutTweets"
             },
             {
+                "stepClassName": "org.tweetwallfx.devoxx18be.steps.heaven.WorksLikeHeavenOnJdk11FadeInStep",
+                "config": {
+                    "layoutX": 1250,
+                    "layoutY": 200
+                }
+            },
+            {
               "stepClassName": "org.tweetwallfx.devoxx18be.steps.cloud.FadeInCloudStep",
                "config": {
                     "layoutX": 1100,
@@ -29,6 +36,12 @@
                     "height": 600,
                     "stepDuration": 30000
                }
+            },
+            {
+                "stepClassName": "org.tweetwallfx.controls.steps.NodeFadeOutStep",
+                "config": {
+                    "nodeSelector": "#hashTagLabel"
+                }
             },
             {
                 "stepClassName": "org.tweetwallfx.devoxx18be.steps.cloud.CloudFadeOutStep"
